@@ -8,14 +8,14 @@ function connectDB(){
     // This is like a template. 
     // 'url' we'll get from mongoDB site rest all are standard.
     //
-    mongoose.connect(url, { useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology:true, useFindAndModify:true });
+    mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology:true, useFindAndModify:true });
     const connection = mongoose.connection;
 
     // Works like an event listener.
     // Once the connection is established the callback is called.
     //
     connection.once( 'open', () => {
-        console.log('Database. Connected.');
+        console.log('Database Connected.');
     }).catch( err => {
         console.log('Connection failed.');
     })
