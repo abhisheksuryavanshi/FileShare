@@ -1,10 +1,17 @@
+// Resume at 35min
 const express = require('express');
-const connectDB = require('./config/db')
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+// Connect DB
+//
+const connectDB = require('./config/db')
 connectDB();
+
+// Routes
+//
+app.use('/api/files', require('./routes/files'))
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
